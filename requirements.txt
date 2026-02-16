@@ -1,2 +1,4 @@
-# dependencies for ingesting data
 pandas
+docling
+scikit-learn
+pydantic
