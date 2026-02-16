@@ -1,8 +1,9 @@
 import pandas as pd
+from config.config import RAW_DATA_DIR, PROCESSED_DATA_DIR
 
 # Загрузка данных
-univ_df_path = "../../datasets/universities.csv"
-prog_df_path = "../../datasets/programs.csv"
+univ_df_path = RAW_DATA_DIR / "universities.csv"
+prog_df_path = RAW_DATA_DIR / "programs.csv"
 univ_df = pd.read_csv(univ_df_path)
 prog_df = pd.read_csv(prog_df_path)
 
@@ -28,25 +29,25 @@ def format_doc(row):
     year_clean = ", ".join(year_parts) if year_parts else "Не указан"
 
     text = f"""Программа: {row['name_prog']}
-Уровень: {row['level']}
-Курс: {year_clean}
-Тип: {row['type']}
-Язык: {row['language']}
-Длительность: {row['duration']}
-Старт программы: {row['start']}
-Дедлайн подачи: {row['deadline']}
-Требования: {row['requirements'] if pd.notna(row['requirements']) else 'Не указаны'}
-Количество мест: {row['quantity']}
-Финансирование: {row['financing'] if pd.notna(row['financing']) else 'Не указано'}
-Проживание: {row['accommodation']}
-Описание программы: {row['description_prog'] if pd.notna(row['description_prog']) else 'Нет описания'}
+    Уровень: {row['level']}
+    Курс: {year_clean}
+    Тип: {row['type']}
+    Язык: {row['language']}
+    Длительность: {row['duration']}
+    Старт программы: {row['start']}
+    Дедлайн подачи: {row['deadline']}
+    Требования: {row['requirements'] if pd.notna(row['requirements']) else 'Не указаны'}
+    Количество мест: {row['quantity']}
+    Финансирование: {row['financing'] if pd.notna(row['financing']) else 'Не указано'}
+    Проживание: {row['accommodation']}
+    Описание программы: {row['description_prog'] if pd.notna(row['description_prog']) else 'Нет описания'}
 
-ВУЗ: {row['name_univ']} ({row['short_name']})
-Город: {row['city']}, {row['region']}
-Рейтинг: {row['rating']}
-Описание вуза: {row['description_univ'] if pd.notna(row['description_univ']) else 'Нет описания'}
-Сайт: {row['website']}
-Контактное лицо: {row['contact_person_name']}, {row['contact_person_email']}, {row['contact_person_phone']}"""
+    ВУЗ: {row['name_univ']} ({row['short_name']})
+    Город: {row['city']}, {row['region']}
+    Рейтинг: {row['rating']}
+    Описание вуза: {row['description_univ'] if pd.notna(row['description_univ']) else 'Нет описания'}
+    Сайт: {row['website']}
+    Контактное лицо: {row['contact_person_name']}, {row['contact_person_email']}, {row['contact_person_phone']}"""
     return text.strip()
 
 # Генерация документов
@@ -56,7 +57,7 @@ for _, row in active.iterrows():
     documents.append(doc)
 
 # Сохранение
-with open("../../datasets/knowledge_corpus.txt", "w", encoding="utf-8") as f:
+with open(PROCESSED_DATA_DIR / "knowledge_corpus.txt", "w", encoding="utf-8") as f:
     for i, doc in enumerate(documents, 1):
         f.write(f"[Программа {i}]\n{doc}\n\n")
 

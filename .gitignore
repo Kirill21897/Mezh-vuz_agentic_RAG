@@ -1,0 +1,78 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# --- Виртуальное окружение ---
+# uv / venv
+.venv/
+venv/
+ENV/
+env/
+
+# --- UV ---
+uv.lock
+.python-version
+
+# --- IDE (VS Code) ---
+.vscode/
+*.code-workspace
+.history/
+
+# --- PyCharm / IntelliJ ---    
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# --- Данные (не коммитим тяжелые файлы) ---
+datasets/raw/*.csv
+datasets/raw/*.txt
+datasets/raw/*.pdf
+datasets/processed/*.txt
+datasets/processed/*.csv
+*.db
+*.sqlite
+*.sqlite3
+
+# --- Секреты и конфиги ---
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+credentials.json
+service_account.json
+
+# --- Логи и кэш ---
+logs/
+*.log
+pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+.mypy_cache/
+.ruff_cache/
+
+# --- ОС ---
+.DS_Store
+Thumbs.db
+desktop.ini
